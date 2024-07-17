@@ -1,3 +1,5 @@
+//npm run start
+
 const soal1 = require('./soal1');
 
 const soal2 = require('./soal2');
