@@ -1,9 +1,8 @@
 import express from "express";
-
 import uploadMiddleware from "./middlewares/upload.middleware";
 import uploadController from "./controllers/upload.controller";
 import productsController from "./controllers/products.controller";
-import categoriesController from "./controllers/categories.controller";
+import categoryController from "./controllers/categories.controller";
 
 const router = express.Router();
 
@@ -13,18 +12,13 @@ router.get("/products/:id", productsController.findOne);
 router.put("/products/:id", productsController.update);
 router.delete("/products/:id", productsController.delete);
 
-
-router.get("/categories", categoriesController.findAll);
-router.post("/categories", categoriesController.create);
-router.get("/categories/:id", categoriesController.findOne);
-router.put("/categories/:id", categoriesController.update);
-router.delete("/categories/:id", categoriesController.delete);
+router.get("/categories", categoryController.findAll);
+router.post("/categories", categoryController.create);
+router.get("/categories/:id", categoryController.findOne);
+router.put("/categories/:id", categoryController.update);
+router.delete("/categories/:id", categoryController.delete);
 
 router.post("/upload", uploadMiddleware.single, uploadController.single);
 router.post("/uploads", uploadMiddleware.multiple, uploadController.multiple);
-
-router.get("/", (req, res) => {
-    res.send('oke');
-});
 
 export default router;
