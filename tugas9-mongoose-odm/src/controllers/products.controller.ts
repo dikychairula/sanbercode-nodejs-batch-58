@@ -36,7 +36,7 @@ export default {
     try {
       const result = await ProductsModel.findOne({
         _id: req.params.id,
-      });
+      }).populate("category");
       res.status(200).json({
         data: result,
         message: "Success get one product",
