@@ -10,6 +10,5 @@ export default (roles: string[]) =>
         message: "Forbidden",
     });
   }
-
     next();
 };

@@ -1,7 +1,7 @@
 
 import express from "express";
 
-import aclMiddleware from "./middlewares/acl.middlware";
+import aclMiddleware from "./middlewares/acl.middleware";
 import authMiddleware from "./middlewares/auth.middleware";
 import uploadMiddleware from "./middlewares/upload.middleware";
 import authController from "./controllers/auth.controller";
@@ -31,7 +31,7 @@ router.post("/uploads", uploadMiddleware.multiple, uploadController.multiple);
 //Authentication routes
 router.post("/auth/login", authController.login);
 router.post("/auth/register", authController.register);
-router.get("/auth/me",[authMiddleware, aclMiddleware(["admin"])],authController.me);
+router.get("/auth/me", [authMiddleware, aclMiddleware(["admin", "user"])], authController.me);
 
 router.get("/auth/me", authController.me);
 router.put("/auth/profile", authMiddleware, authController.profile);
